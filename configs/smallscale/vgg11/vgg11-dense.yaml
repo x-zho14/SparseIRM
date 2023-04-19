@@ -1,0 +1,29 @@
+# Architecture
+arch: vgg11
+
+# ===== Dataset ===== #
+data: /data
+set: CIFAR10
+name: vgg11-dense
+
+# ===== Learning Rate Policy ======== #
+optimizer: sgd
+lr: 0.1
+lr_policy: cosine_lr
+
+# ===== Network training config ===== #
+epochs: 300
+weight_decay: 0.0005
+momentum: 0.9
+batch_size: 128
+
+# ===== Sparsity =========== #
+conv_type: DenseConv
+bn_type: LearnedBatchNorm
+init: kaiming_normal
+mode: fan_in
+nonlinearity: relu
+prune_rate: 0.0
+
+# ===== Hardware setup ===== #
+workers: 4
