@@ -47,15 +47,7 @@ def main_worker(args):
     train, validate, modifier = get_trainer(args)
     model = get_model(args)
     model = set_gpu(args, model)
-    if args.pretrained:
-        pretrained(args, model)
-        if args.fix_subnet:
-            fix_model_subnet(model)
-            freeze_model_subnet(model)
-        if args.freeze_weight:
-            freeze_model_weights(model)
-    if args.pretrained_distill:
-        pretrained(args, model, args.pretrained_distill)
+    
     optimizer, weight_opt = get_optimizer(args, model)
     # data = get_dataset(args)
     if args.set == "mnist":
